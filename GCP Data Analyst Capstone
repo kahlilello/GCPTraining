@@ -60,6 +60,17 @@ SELECT issue_year, COUNT(loan_id) AS loan_count
 FROM fintech.loan
 GROUP BY issue_year;
 
+2 Analyze and activate your data with Looker Enterprise
+
+Task 2 
+Query A
+SELECT 
+  COALESCE(
+    SUM(CASE WHEN (loan.loan_status <> 'Fully Paid' 
+            OR loan.loan_status IS NULL)
+        THEN loan.loan_amount ELSE NULL END), 0) AS loan_outstanding_loans_amount 
+FROM `cloud-training-demos.fintech.loan` AS loan LIMIT 500;
+
 
 
 

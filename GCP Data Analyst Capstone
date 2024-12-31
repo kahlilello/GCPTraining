@@ -12,3 +12,14 @@ region string
 FROM FILES (
 format = 'CSV',
 uris = ['gs://sureskills-lab-dev/future-workforce/da-capstone/temp_35_us/state_region_mapping/state_region_*.csv']);
+
+
+Task 4: Join data from two tables
+
+SELECT
+lo.loan_id,
+lo.loan_amount,
+sr.region
+FROM fintech.loan lo
+INNER JOIN fintech.state_region sr
+ON lo.state = sr.state;

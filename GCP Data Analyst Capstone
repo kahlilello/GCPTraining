@@ -41,6 +41,26 @@ Task 6: Work with nested data
 SELECT loan_id,application.purpose
 FROM fintech.loan;
 
+Task 7: Deduplicate data
+
+DROP TABLE fintech.loan_purposes;
+
+CREATE TABLE fintech.loan_purposes AS
+SELECT DISTINCT application.purpose
+FROM fintech.loan;
+
+Task 8: Answer business questions with a report
+
+SELECT issue_year, sum(loan_amount) AS total_amount
+FROM fintech.loan
+GROUP BY issue_year;
+
+CREATE TABLE fintech.loan_count_by_year AS
+SELECT issue_year, COUNT(loan_id) AS loan_count
+FROM fintech.loan
+GROUP BY issue_year;
+
+
 
 
 
